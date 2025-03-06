@@ -1,27 +1,60 @@
-# Virtual environment folders
-venv/
-.env/
-ENV/
-
-# Byte-compiled / optimized / DLL files
+### .gitignore
+```gitignore
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Distribution / packaging
-*.egg-info/
-dist/
+*.so
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Logs and temporary files
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# Logs and databases
 *.log
-*.tmp
+*.sqlite
+*.db
 
-# IDE and editor directories
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# System files
+# Local files
+*.xlsx
+outputs/
+!.gitkeep
+
+# System Files
 .DS_Store
 Thumbs.db
 
+# Test files
+test/
+tests/
+
+# Examples
+examples/output_*
+!examples/input_*
+
+# Environment variables
+.env
+.env.local
