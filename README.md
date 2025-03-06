@@ -1,24 +1,108 @@
-# PDF-to-Excel Converter
+# PDF to Excel Converter
 
-This project converts image-based PDFs into structured Excel files by leveraging OCR and advanced image preprocessing techniques.
+A robust Python tool for converting both text-based and scanned PDF tables to Excel files with high accuracy using OCR and advanced image processing.
 
 ## Features
 
-- Converts multi-page PDFs to images.
-- Preprocesses images using OpenCV (grayscale, thresholding, noise removal, etc.).
-- Uses Tesseract OCR with optimized settings.
-- Extracts tables using Camelot and OpenCV.
-- Exports data into a well-formatted Excel file.
-- Supports batch processing with multiprocessing.
+- **Dual PDF Support:** Handles both text-based and image-based PDFs.
+- **Advanced Image Preprocessing:** Utilizes OpenCV for noise removal and enhanced OCR performance.
+- **Optimized OCR:** Leverages Tesseract OCR with optimized settings.
+- **Table Extraction:** Integrates Camelot for text-based tables.
+- **Excel Export:** Automatically adjusts column widths for clarity.
+- **Batch Processing:** Supports converting multiple PDFs in one go.
+- **Robust Logging:** Detailed logging and error handling for easier troubleshooting.
 
-## How to Use
+## Prerequisites
 
-1. Install dependencies from `requirements.txt`.
-2. Run `main.py` to process your PDF.
-3. Check the `examples/` folder for sample inputs and outputs.
+- Python 3.8+
+- Tesseract OCR Engine
+- Poppler Utils (for PDF-to-image conversion)
 
-## Installation
+## System Dependencies
 
-```bash
+### Windows
+
+1. **Install Tesseract OCR:**  
+   [Tesseract OCR for Windows](https://github.com/UB-Mannheim/tesseract/wiki)
+
+2. **Install Poppler:**  
+   [Poppler for Windows](https://github.com/oschwartz10612/poppler-windows/releases/)
+
+### Mac (using Homebrew)
+
+
+`brew install tesseract poppler`
+
+### Linux (Debian/Ubuntu)
+
+`sudo apt-get install tesseract-ocr poppler-utils`
+
+
+### Installation
+
+Clone the repository and install the Python dependencies:
+```
+git clone https://github.com/yourusername/pdf-to-excel-converter.git
+cd pdf-to-excel-converter
 pip install -r requirements.txt
+```
+
+### Usage
+
+Run the converter from the command line by specifying the input PDF and output Excel file:
+
+`python main.py input.pdf output.xlsx`
+
+## Examples
+
+### Convert a Text-Based PDF
+
+`python main.py examples/text_table.pdf text_output.xlsx`
+
+### Convert a Scanned PDF
+
+`python main.py examples/scanned_table.pdf image_output.xlsx`
+
+### Batch Processing
+
+`Use a shell loop to process multiple PDFs:`
+
+```
+for pdf in inputs/*.pdf; do
+    python main.py "$pdf" "outputs/$(basename "$pdf" .pdf).xlsx"
+done
+```
+
+### Configuration
+Customize processing parameters in the following files:
+- `preprocessing.py` : Adjust image processing settings.
+- `ocr_module.py`: Tweak OCR engine parameters.
+- `table_extraction.py`: Modify table detection thresholds.
+
+## Troubleshooting
+
+### Common Issues
+1. Tesseract Not Found Error:
+  Ensure that Tesseract is installed and its path is added to the system PATH environment variable.
+
+2. PDF Conversion Errors:
+  Verify that Poppler utils are installed and that the PDF file permissions are correct.
+
+3. Missing Dependencies:
+  Reinstall requirements by running:
+  `pip install -r requirements.txt`
+
+## Contributing
+Contributions are welcome! Follow these steps to contribute:
+1. Fork the Repository.
+2. Create a Feature Branch:
+  `git checkout -b feature/your-feature`
+3. Commit Your Changes:
+   `git commit -m "Add some feature"`
+4. Push to Your Branch:
+   `git push origin feature/your-feature`
+5. Open a Pull Request.
+
+
+
 
